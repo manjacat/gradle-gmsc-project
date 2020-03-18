@@ -1,0 +1,6 @@
+com.intergraph.dude.extensions.PluginTaskOnStartup
+com.intergraph.dude.extensions.AGMapInteractionPlugin
+com.intergraph.dude.extensions.OfflineDBSummaryPlugin
+com.intergraph.dude.extensions.SettingsWarehousePlugin
+com.intergraph.dude.extensions.GetElementsUnderClick
+com.intergraph.dude.extensions.IprEditPlugin
