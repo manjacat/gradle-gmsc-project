@@ -75,6 +75,7 @@ public class AGMapInteractionPlugin extends AbstractPlugin {
 			// MapSelectionTools myTools = new MapSelectionTools();
 			 //myTools.setQuickPickMode(true);
 			 //myTools.MAPSELECTPOINT(action);
+
 			QuickPickPlugin myQuickPick =  (QuickPickPlugin) ApplicationContext.getPluginCurator().getByName("QuickPickPlugin");
 			myQuickPick.quickPickWithPoint(action);
 			

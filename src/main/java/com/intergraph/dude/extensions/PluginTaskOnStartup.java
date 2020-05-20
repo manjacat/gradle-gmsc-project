@@ -24,7 +24,7 @@ public class PluginTaskOnStartup extends AbstractPlugin {
 		super.start();
 		//new URL( "http://www.google.com" ).openConnection().setDefaultUseCaches( false ); //-->only needed to disable the java caching of urls
 		myTitle = ApplicationContext.getDesktop().getMainFrame().getTitle();
-		GUIToolkit.showInfo(testMessage);
+		GUIToolkit.showInfo(disclaimer);
 		
 		
 	}	

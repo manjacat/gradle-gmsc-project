@@ -1,2 +1,4 @@
 com.intergraph.dude.scripting.DynamicActiveJobScriptingObject
 com.intergraph.dude.scripting.SearchNFilterExtensionScriptingObject
+com.intergraph.dude.scripting.COPEditScriptingObject
+com.intergraph.dude.scripting.OfflineUtilityScriptingObject
