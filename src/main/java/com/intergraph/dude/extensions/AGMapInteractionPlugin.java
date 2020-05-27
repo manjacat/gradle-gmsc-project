@@ -2,7 +2,7 @@ package com.intergraph.dude.extensions;
 
 import com.intergraph.tools.ui.GUIToolkit;
 import com.intergraph.tools.utils.disptach.ActionDispatcher;
-import com.intergraph.tools.utils.disptach.RPAction;
+//import com.intergraph.tools.utils.disptach.RPAction;
 import com.intergraph.tools.utils.disptach.annotations.Action;
 import com.intergraph.tools.utils.disptach.annotations.ActionLocation;
 import com.intergraph.tools.utils.disptach.annotations.Plugin;
@@ -10,7 +10,7 @@ import com.intergraph.web.core.browsing.MapSelectionCurator;
 import com.intergraph.web.core.data.feature.Feature;
 import com.intergraph.web.core.kernel.ApplicationContext;
 import com.intergraph.web.core.kernel.plugin.AbstractPlugin;
-import com.intergraph.web.plugin.quickpick.QuickPickPlugin;
+//import com.intergraph.web.plugin.quickpick.QuickPickPlugin;
 import com.intergraph.web.plugin.tooltip.ExtendedTooltipPlugin;
 import com.intergraph.web.viewer.map.GMap;
 import com.intergraph.web.viewer.map.MapState;
@@ -18,7 +18,7 @@ import com.intergraph.web.viewer.map.MapState;
 @Plugin(alias = "AGMapInteraction", vendor = "Intergraph Corp.")
 public class AGMapInteractionPlugin extends AbstractPlugin {
 
-	private static final RPAction	action	= null;
+//	private static final RPAction	action	= null;
 	
 	/**
 	 * Fit Me - Fit current Active Element
@@ -60,26 +60,27 @@ public class AGMapInteractionPlugin extends AbstractPlugin {
 		
 	}
 	
-	
-	@Action(icon = "selector-25.svg", actionLocation = ActionLocation.FAVORITES)
-	public void SelectFeatureByPoint()
-	{
-		//abort everything first then only start
-			GMap map = context.getMap();
-			
-			map.getMeasurementController().abortAll();
-			if (map.getState() != MapState.IDLE)
-				map.setState(MapState.IDLE);
-			 ApplicationContext.getBrowser().clearMapSelection();
-			 
-			// MapSelectionTools myTools = new MapSelectionTools();
-			 //myTools.setQuickPickMode(true);
-			 //myTools.MAPSELECTPOINT(action);
+// commented "SelectFeatureByPoint" and "SelectFeatureByRectangular" because I don't know how to fix the code
 
-			QuickPickPlugin myQuickPick =  (QuickPickPlugin) ApplicationContext.getPluginCurator().getByName("QuickPickPlugin");
-			myQuickPick.quickPickWithPoint(action);
-			
-	}
+//	@Action(icon = "selector-25.svg", actionLocation = ActionLocation.FAVORITES)
+//	public void SelectFeatureByPoint()
+//	{
+//		//abort everything first then only start
+//			GMap map = context.getMap();
+//			
+//			map.getMeasurementController().abortAll();
+//			if (map.getState() != MapState.IDLE)
+//				map.setState(MapState.IDLE);
+//			 ApplicationContext.getBrowser().clearMapSelection();
+//			 
+//			// MapSelectionTools myTools = new MapSelectionTools();
+//			 //myTools.setQuickPickMode(true);
+//			 //myTools.MAPSELECTPOINT(action);
+//
+//			QuickPickPlugin myQuickPick =  (QuickPickPlugin) ApplicationContext.getPluginCurator().getByName("QuickPickPlugin");
+//			myQuickPick.quickPickWithPoint(action);
+//			
+//	}
 
 //	@Action(icon = "map-25.svg", actionLocation = ActionLocation.FAVORITES)
 //	public void SelectFeatureByMapExtent()
@@ -96,24 +97,24 @@ public class AGMapInteractionPlugin extends AbstractPlugin {
 //			 myTools.MAPSELECTMAPRANGE(action);
 //	}
 //	
-	@Action(icon = "selectorRect-25.svg", actionLocation = ActionLocation.FAVORITES)
-	public void SelectFeatureByRectangular()
-	{
-		//abort everything first then only start
-			GMap map = context.getMap();
-			map.getMeasurementController().abortAll();
-			if (map.getState() != MapState.IDLE)
-				map.setState(MapState.IDLE);
-			 ApplicationContext.getBrowser().clearMapSelection();
-			 
-			// MapSelectionTools myTools = new MapSelectionTools();
-			// myTools.setQuickPickMode(true);
-			// myTools.MAPSELECTRECTANGULAR(action);
-			//ApplicationContext.getDesktop().getMainFrame().setTitle("HIHI CATHY");
-			QuickPickPlugin myQuickPick =  (QuickPickPlugin) ApplicationContext.getPluginCurator().getByName("QuickPickPlugin");
-			myQuickPick.quickPickWithRectangle(action);
-			
-	}
+//	@Action(icon = "selectorRect-25.svg", actionLocation = ActionLocation.FAVORITES)
+//	public void SelectFeatureByRectangular()
+//	{
+//		//abort everything first then only start
+//			GMap map = context.getMap();
+//			map.getMeasurementController().abortAll();
+//			if (map.getState() != MapState.IDLE)
+//				map.setState(MapState.IDLE);
+//			 ApplicationContext.getBrowser().clearMapSelection();
+//			 
+//			// MapSelectionTools myTools = new MapSelectionTools();
+//			// myTools.setQuickPickMode(true);
+//			// myTools.MAPSELECTRECTANGULAR(action);
+//			//ApplicationContext.getDesktop().getMainFrame().setTitle("HIHI CATHY");
+//			QuickPickPlugin myQuickPick =  (QuickPickPlugin) ApplicationContext.getPluginCurator().getByName("QuickPickPlugin");
+//			myQuickPick.quickPickWithRectangle(action);
+//			
+//	}
 	
 //	@Action(icon = "selectorPolygon-25.svg", actionLocation = ActionLocation.FAVORITES)
 //	public void SelectFeatureByPolygon()
