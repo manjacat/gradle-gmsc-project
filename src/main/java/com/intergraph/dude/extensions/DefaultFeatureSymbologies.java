@@ -135,8 +135,12 @@ public enum DefaultFeatureSymbologies
 	FEATURE_1454 ("e9a56fde-3bc9-4761-b33e-274f9632315e"),	
 	//1526|Redline PE DUDEEO.CGIS_REDLINE_PE 0 0 DUDE (SITE)  -- featureid: 3ffc38fe-c112-4469-bac0-91a6df876e78
 	FEATURE_1526 ("9a064fd2-c55b-4146-88aa-c74edaaba7b6"),	
-	//1647|Redline LVDB DUDEEO.CGIS_REDLINE_PE 0 0 DUDE (SITE) -- featureid: d3242684-8067-4688-b275-7089289e5a42
-	FEATURE_1647 ("31c76e5e-62f5-41e5-b1e0-b26d3289ccdc"),
+	
+	//25/6/2020 Changed Simple Id due to GMSC Upgrade
+	//1628|Redline LVDB DUDEEO.CGIS_REDLINE_PE 0 0 DUDE (SITE) -- featureid: 17ace662-879d-4d0a-8c4c-6234508a0d56
+	FEATURE_1628 ("31c76e5e-62f5-41e5-b1e0-b26d3289ccdc"),
+
+	
 	
 	///////////////////////////////////////////////////
 	/////////  DUDE-SNC SITE new redline //////////////

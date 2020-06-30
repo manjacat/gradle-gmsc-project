@@ -175,8 +175,12 @@ public enum DefaultEditCmd
 	FEATURE_1525 ("W_EDIT_Redline_PE"),
 	//1526 EDIT_Redline_PE_Site <--- For redline PE/LVDB Site
 	FEATURE_1526 ("EDIT_Redline_PE_Site"),
-	FEATURE_1646 ("W_EDIT_Redline_CPPLVDB"),
-	FEATURE_1647 ("EDIT_Redline_LVDB_Site");
+	//FEATURE_1646 ("W_EDIT_Redline_CPPLVDB"),
+	//FEATURE_1647 ("EDIT_Redline_LVDB_Site");
+	
+	//Upgrade GMSC Changes 25Jun2020
+	FEATURE_1627 ("W_EDIT_Redline_CPPLVDB"),
+	FEATURE_1628 ("EDIT_Redline_LVDB_Site");
 	 
 
     private final String CmdName;       
