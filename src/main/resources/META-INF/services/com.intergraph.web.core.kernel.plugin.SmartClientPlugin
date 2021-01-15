@@ -4,4 +4,3 @@ com.intergraph.dude.extensions.OfflineDBSummaryPlugin
 com.intergraph.dude.extensions.SettingsWarehousePlugin
 com.intergraph.dude.extensions.GetElementsUnderClick
 com.intergraph.dude.extensions.IprEditPlugin
-com.intergraph.dude.extensions.AGMapSliderPlugin

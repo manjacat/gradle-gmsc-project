@@ -1,11 +1,13 @@
 package com.intergraph.dude.extensions;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,7 +22,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.nocrala.tools.gis.data.esri.shapefile.ShapeFileReader;
@@ -60,6 +66,8 @@ import com.intergraph.web.viewer.data.GPrimitive;
 import com.intergraph.web.viewer.data.primitives.GPoint;
 import com.intergraph.web.viewer.data.primitives.GPolygon;
 import com.intergraph.web.viewer.data.primitives.GPolyline;
+import com.intergraph.web.viewer.map.DefaultMapProducer;
+import com.intergraph.web.viewer.map.GMap;
 import com.intergraph.web.viewer.map.style.GFeatureTypeStyleManager;
 import com.ionicsoft.sref.EPSGID;
 
@@ -71,7 +79,9 @@ public class SettingsWarehousePlugin extends AbstractPlugin
 	private Dock userDock;
 	private JPanel dockContentPane;
 	private boolean bAllowMultipleSel;
-	private static final UUID	sStyleId	= UUID.fromString("d0c11722-2e5d-400d-97fc-e9d7f230ee1f");	
+	private static final UUID	sStyleId	= UUID.fromString("d0c11722-2e5d-400d-97fc-e9d7f230ee1f");
+	// variable for slider
+	double xcoord, ycoord;
 
 	@Override
 	public void loadOnStart() throws Exception 
@@ -202,10 +212,39 @@ public class SettingsWarehousePlugin extends AbstractPlugin
 		    }
 	    	
 		 }
+	    
+	    // 15/01/2021 - Khairil add JSlider	
+	    GMap gmap = context.getMap();
+	    JSlider slider = new JSlider(0, 20000, 8000);
+		slider.setOrientation(SwingConstants.HORIZONTAL);
+		slider.setPreferredSize(new Dimension(350, 100));
+		slider.setMajorTickSpacing(5000);
+		slider.setMinorTickSpacing(1000);
+		//slider.setSnapToTicks(true);
+		slider.setPaintTicks(true);
+		slider.setPaintTrack(true);
+		slider.setPaintLabels(true);
+		
+		slider.addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				DefaultMapProducer mapProducer = gmap.getMapProducer();
+				Point2D pt = mapProducer.toMap(new Point2D.Double(833,458));
+				xcoord = pt.getX();
+				ycoord = pt.getY();
+				gmap.setCenterAndScale(xcoord, ycoord, slider.getValue());
+			}
+		});
+		
+		dockContentPane.add(slider);		
+		
 
 	    return userDock = new Dock("Settings", dockContentPane);
 		   
 	}
+	
+	
 	
 	private void ReadShpFile(String fName) throws InvalidShapeFileException, IOException {
 		

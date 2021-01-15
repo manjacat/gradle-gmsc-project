@@ -8,6 +8,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.intergraph.tools.ui.GUIToolkit;
 import com.intergraph.tools.ui.models.GenericListModel;
 import com.intergraph.tools.utils.disptach.annotations.Action;
 import com.intergraph.tools.utils.disptach.annotations.Plugin;
@@ -59,6 +60,8 @@ public class GetElementsUnderClick extends AbstractPlugin {
 				// coordinates of click in the map (map window coordinates - not the world coords)
 				Point2D pt = mapProducer.toMap(new Point2D.Double(mapProducer.toWorldX(me.getPoint().x),
 						mapProducer.toWorldY(me.getPoint().y)));
+				
+				GUIToolkit.showInfo("Mouse (" + me.getPoint().x + "," + me.getPoint().y + ")");
 
 				// very small rectangle around the click
 				Rectangle2D rect = new Rectangle2D.Double(pt.getX(), pt.getY(), 0.00001, 0.00001);
