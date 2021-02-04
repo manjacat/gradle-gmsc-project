@@ -1,4 +1,4 @@
-package com.intergraph.dude.extensions;
+package com.hexagon.gmsc.sample;
 
 import javax.swing.*;
 import java.awt.*;
@@ -78,5 +78,3 @@ public class SliderTutorial implements ChangeListener {
 
 	}
 }
-
-

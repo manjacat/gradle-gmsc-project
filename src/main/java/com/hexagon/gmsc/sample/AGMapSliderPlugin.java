@@ -1,6 +1,7 @@
-package com.intergraph.dude.extensions;
+package com.hexagon.gmsc.sample;
 
 import java.awt.Dimension;
+
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
@@ -14,6 +15,7 @@ import com.intergraph.tools.utils.disptach.annotations.Plugin;
 import com.intergraph.web.core.kernel.plugin.AbstractPlugin;
 import com.intergraph.web.core.warehouse.SettingWarehouse;
 import com.intergraph.web.ui.SmartClientShortAccess;
+
 import net.miginfocom.swing.MigLayout;
 
 @Plugin(alias = "AGMapSliderPlugin", vendor = "RedPlanet Corp.")

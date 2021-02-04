@@ -7,7 +7,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -66,7 +65,6 @@ import com.intergraph.web.viewer.data.GPrimitive;
 import com.intergraph.web.viewer.data.primitives.GPoint;
 import com.intergraph.web.viewer.data.primitives.GPolygon;
 import com.intergraph.web.viewer.data.primitives.GPolyline;
-import com.intergraph.web.viewer.map.DefaultMapProducer;
 import com.intergraph.web.viewer.map.GMap;
 import com.intergraph.web.viewer.map.style.GFeatureTypeStyleManager;
 import com.ionicsoft.sref.EPSGID;
@@ -215,12 +213,28 @@ public class SettingsWarehousePlugin extends AbstractPlugin
 	    
 	    // 15/01/2021 - Khairil add JSlider	
 	    GMap gmap = context.getMap();
-	    JSlider slider = new JSlider(0, 20000, 8000);
+	    //get current scale of map.
+	    long mapscale = gmap.getScale();
+		int currslider = 0;
+		//set the min/max value of slider
+		int minslider = 0;
+		int maxslider = 10000;
+		// if current scale > max(slider), fix slider value at max(slider)
+		if (mapscale > maxslider)
+		{
+			currslider = maxslider;
+		}
+		else {
+			currslider = (int)mapscale;
+		}
+	    
+		//create the slider
+	    JSlider slider = new JSlider(minslider, maxslider, currslider);
 		slider.setOrientation(SwingConstants.HORIZONTAL);
-		slider.setPreferredSize(new Dimension(350, 100));
-		slider.setMajorTickSpacing(5000);
-		slider.setMinorTickSpacing(1000);
-		//slider.setSnapToTicks(true);
+		slider.setPreferredSize(new Dimension(300, 80));
+		slider.setMajorTickSpacing(2000);
+		slider.setMinorTickSpacing(500);
+		slider.setSnapToTicks(false);
 		slider.setPaintTicks(true);
 		slider.setPaintTrack(true);
 		slider.setPaintLabels(true);
@@ -229,14 +243,23 @@ public class SettingsWarehousePlugin extends AbstractPlugin
 			
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				DefaultMapProducer mapProducer = gmap.getMapProducer();
-				Point2D pt = mapProducer.toMap(new Point2D.Double(833,458));
-				xcoord = pt.getX();
-				ycoord = pt.getY();
-				gmap.setCenterAndScale(xcoord, ycoord, slider.getValue());
+				//DefaultMapProducer mapProducer = gmap.getMapProducer();
+				//Point2D pt = mapProducer.toMap(new Point2D.Double(833,458));
+				
+				GCoordinate myCoord = context.getBrowser().getMapCenter();				
+				//GUIToolkit.showInfo("GCoord (" + myCoord.getX() + "," + myCoord.getY() + ")");
+				
+				Log.getLogger().log(Level.INFO , "- point : " + myCoord.getX() + "," + myCoord.getY() );	        	  
+				
+				xcoord = myCoord.getX(); //655230.047; //pt.getX();
+				ycoord = myCoord.getY(); //595022.153;//pt.getY();
+				
+				// this will set the zoom scale to whatever the current value of slider
+				gmap.setCenterAndScale(xcoord, ycoord, slider.getValue());				
 			}
 		});
 		
+		//add slider to dockContentPane
 		dockContentPane.add(slider);		
 		
 
