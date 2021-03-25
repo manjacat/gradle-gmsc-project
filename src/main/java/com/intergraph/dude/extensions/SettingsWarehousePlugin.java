@@ -231,6 +231,7 @@ public class SettingsWarehousePlugin extends AbstractPlugin
 		//create the slider
 	    JSlider slider = new JSlider(minslider, maxslider, currslider);
 		slider.setOrientation(SwingConstants.HORIZONTAL);
+		slider.setInverted(true);
 		slider.setPreferredSize(new Dimension(300, 80));
 		slider.setMajorTickSpacing(2000);
 		slider.setMinorTickSpacing(500);
@@ -238,7 +239,7 @@ public class SettingsWarehousePlugin extends AbstractPlugin
 		slider.setPaintTicks(true);
 		slider.setPaintTrack(true);
 		slider.setPaintLabels(true);
-		
+				
 		slider.addChangeListener(new ChangeListener() {
 			
 			@Override
